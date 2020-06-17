@@ -8,7 +8,7 @@ const PORT = 3000;
 const app = express();
 
 app.use( express.static( 'public' ));
-app.use( "/", apiRoutes );
+app.use( "/api", apiRoutes );
 app.use( "/", htmlRoutes );
 
 
