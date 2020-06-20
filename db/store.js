@@ -11,10 +11,11 @@ class Store {
 
     read() {
         return readFileAsync(dbPath , "utf8");
+    
     }
 
     write(content){
-        console.log("write this", content);
+        
         return writeFileAsync(dbPath, content )
         
     }
@@ -41,29 +42,26 @@ class Store {
         .getNotes()
         .then( (notes) =>{
        
-           
             const newNote = { ... note, id: uuidv1() }
             notes.push( newNote );
             
-          
             return this.saveNotes( notes ).then(() => newNote);
-        })
-
-    }
+        });
+    };
 
     deleteNote( noteID ) {
-       console.log(noteID)
+       
         return this
         .getNotes()
         .then( (notes) =>{
             const newList = notes.filter( (note) => note.id !== noteID )
             console.log(newList)
                 this.saveNotes(newList)
-            })
+        });
         
-        }
+    };
    
-}
+};
 
 
 module.exports = new Store;
