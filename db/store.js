@@ -52,11 +52,12 @@ class Store {
     }
 
     deleteNote( noteID ) {
+       console.log(noteID)
         return this
         .getNotes()
         .then( (notes) =>{
-            const newList = notes.filter( (note) => {note.id !== noteID })
-                
+            const newList = notes.filter( (note) => note.id !== noteID )
+            console.log(newList)
                 this.saveNotes(newList)
             })
         
